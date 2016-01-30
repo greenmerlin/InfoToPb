@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pbcopy='xclip -selection clipboard'
+cat /dev/null > .info_df.log
+press_papier=".info_df.log"
+
+lsb_release -a >> ${press_papier}
+lspci | grep -i vga >> ${press_papier}
+cat /var/log/Xorg.0.log >> ${press_papier}
+dmesg >> ${press_papier} 
+
+cat ${press_papier} | ${pbcopy}
+
